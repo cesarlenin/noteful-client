@@ -11,7 +11,7 @@ export default class Note extends Component {
         <h2>{this.props.name}</h2>
       </Link>
       <p>modified on:{modified.getDate()}/{modified.getMonth()}/{modified.getFullYear()}</p>
-        <button>Delete Note</button>
+        <button>Delete Note</button>{/*add call back handleDelete */}
       </div> 
     )
   }

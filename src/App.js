@@ -16,6 +16,14 @@ export default class App extends Component {
     notes: STORE.notes,
   }
 
+  //fetch for /folders and notes
+  componentDidMount(){
+  //http://localhost:9090/folders
+  //http://localhost:9090/notes
+  }
+
+  //delete function
+
   render() {
     return (
       <UserContext.Provider value={{
@@ -35,10 +43,8 @@ export default class App extends Component {
               {...routerProps}
              />} />
              <Route exact path='/Notes/:noteId' 
-              render={(routerProps) =>
-              <NotePage
-              {...routerProps}
-             />} />
+              component={NotePage}
+              />
           <Route component={NotFound} />
         </Switch>
 
