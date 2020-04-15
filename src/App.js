@@ -18,8 +18,16 @@ export default class App extends Component {
 
   //fetch for /folders and notes
   componentDidMount(){
-  //http://localhost:9090/folders
-  //http://localhost:9090/notes
+  fetch('http://localhost:9090/folders')
+    .then(response => response.json())
+    .then(data => this.setState({
+      folders: data.folders
+    }))
+  fetch('http://localhost:9090/notes')
+    .then(response => response.json())
+    .then(data => this.setState({
+      folders: data.folders
+  }))
   }
 
   //delete function
