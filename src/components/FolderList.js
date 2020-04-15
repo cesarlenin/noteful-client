@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Folder from './Folder'
-// import STORE from '../dummy-store';
 import UserContext from './UserContext'
 
 export default class FolderList extends Component {

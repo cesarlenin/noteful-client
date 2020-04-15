@@ -25,25 +25,25 @@ export default class App extends Component {
       <div>
         <Link to="/"><h1>Noteful</h1></Link>
         <Switch>
+
           <Route exact path='/' render={() =>
-             <MainPage
-             folders={this.state.folders}
-             notes={this.state.notes}
-            />} />
-            <Route exact path='/FolderLists/:folderId' 
-              render={(routerProps) =>
-              <FolderPage
+             <MainPage/>
+            }
+          />
+
+          <Route exact path='/FolderLists/:folderId' render={(routerProps) =>
+            <FolderPage
               {...routerProps}
-              folders={this.state.folders}
-              notes={this.state.notes}
-             />} />
-             <Route exact path='/Notes/:noteId' 
-              render={(routerProps) =>
-              <NotePage
+              />
+            } 
+          />
+
+          <Route exact path='/Notes/:noteId' render={(routerProps) =>
+            <NotePage
               {...routerProps}
-              folders={this.state.folders}
-              notes={this.state.notes}
-             />} />
+             />
+            } 
+          />
           <Route component={NotFound} />
         </Switch>
 

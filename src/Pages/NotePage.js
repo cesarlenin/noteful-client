@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import NoteList from '../components/NoteList';
+import UserContext from '../components/UserContext'
 import '../App.css';
 
 export default class NotePage extends Component {
+  static contextType = UserContext;
   render() {
-
-    
-
-    const shownNote = this.props.notes.find(note => note.id === this.props.match.params.noteId);
-
-    const shownFolder = this.props.folders.find(folder => folder.id === shownNote.folderId);
-    
-    console.log(shownNote);
+    const {folders,notes} = this.context;
+    const shownNote = notes.find(note => note.id === this.props.match.params.noteId);
+    const shownFolder = folders.find(folder => folder.id === shownNote.folderId);
     
      return (
        <main>

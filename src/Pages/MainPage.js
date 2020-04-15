@@ -8,9 +8,7 @@ export default class MainPage extends Component {
     return (
       <main>
         <section className="folderList">
-        <FolderList 
-        folders={this.props.folders}
-        />
+        <FolderList/>
         </section>
         <section className="noteList ">
         <NoteList 
