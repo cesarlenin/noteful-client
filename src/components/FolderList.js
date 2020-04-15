@@ -9,7 +9,7 @@ export default class FolderList extends Component {
     const {folders} = this.context;
      const foldersList = folders.map(folder => {
 
-      return <Folder id={folder.id} name={folder.name}/>
+      return <Folder key={folder.id} id={folder.id} name={folder.name}/>
     })
     
 
