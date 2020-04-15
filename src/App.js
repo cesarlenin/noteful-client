@@ -18,25 +18,46 @@ export default class App extends Component {
 
   //fetch for /folders and notes
   componentDidMount(){
-  fetch('http://localhost:9090/folders')
+  fetch('http://localhost:3000/folders')
     .then(response => response.json())
-    .then(data => this.setState({
-      folders: data.folders
-    }))
-  fetch('http://localhost:9090/notes')
+    .then(data => this.setState(
+      {folders: data}
+    ))
+  fetch('http://localhost:3000/notes')
     .then(response => response.json())
-    .then(data => this.setState({
-      notes: data.notes
-  }))
+    .then(data => this.setState(
+      {notes: data}
+      ))
   }
 
   //delete function
+  handleDelete(noteId,e){
+    e.preventDefault()
+    console.log(noteId)
+//     fetch(`http://localhost:9090/notes/${noteId}`, {
+//        method: 'DELETE',
+//        headers: {
+//          'content-type': 'application/json'
+//   }
+//   .then(res => {
+//     if (!res.ok) {
+//       return res.json()
+//       .then(error => {
+//         throw error
+//       })
+//     }
+//     return res.json()
+//   })
+// })
+
+  }
 
   render() {
     return (
       <UserContext.Provider value={{
         folders: this.state.folders,
-        notes: this.state.notes
+        notes: this.state.notes,
+        onDelete:this.handleDelete
     }}>
       <div>
         <Link to="/"><h1>Noteful</h1></Link>

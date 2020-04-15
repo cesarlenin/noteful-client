@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import UserContext from '../components/UserContext'
 import "./Note.css"
 
 export default class Note extends Component {
+  static contextType = UserContext;
   render() {
     const modified= new Date(this.props.modified);
     return (
@@ -11,7 +13,9 @@ export default class Note extends Component {
         <h2>{this.props.name}</h2>
       </Link>
       <p>modified on:{modified.getDate()}/{modified.getMonth()}/{modified.getFullYear()}</p>
-        <button>Delete Note</button>{/*add call back handleDelete */}
+      <button onClick={e=>this.context.onDelete("hello",e)}>
+          Delete Note
+      </button>{/*add call back handleDelete */}
       </div> 
     )
   }
