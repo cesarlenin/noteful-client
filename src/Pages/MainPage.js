@@ -8,11 +8,13 @@ export default class MainPage extends Component {
     return (
       <main>
         <section className="folderList">
-          <FolderList/>
+        <FolderList/>
         </section>
         <section className="noteList ">
-          <NoteList />
-          <button>Add notes</button>
+        <NoteList 
+        notes={this.props.notes}
+        />
+        <button>Add notes</button>
         </section>
       </main>
     )
