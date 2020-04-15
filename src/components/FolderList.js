@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import Folder from './Folder'
+// import STORE from '../dummy-store';
+import UserContext from './UserContext'
 
 export default class FolderList extends Component {
-  render() {
 
-     const foldersList = this.props.folders.map(folder => {
+  static contextType = UserContext;
+  render() {
+    const {folders} = this.context;
+     const foldersList = folders.map(folder => {
 
       return <Folder id={folder.id} name={folder.name}/>
     })

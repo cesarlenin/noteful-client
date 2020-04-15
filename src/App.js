@@ -3,6 +3,7 @@ import NotFound from './Pages/NotFound';
 import MainPage from './Pages/MainPage';
 import FolderPage from './Pages/FolderPage';
 import NotePage from './Pages/NotePage';
+import UserContext from './components/UserContext';
 import {Route, Switch, Link} from 'react-router-dom';
 import STORE from './dummy-store';
 
@@ -17,6 +18,10 @@ export default class App extends Component {
 
   render() {
     return (
+      <UserContext.Provider value={{
+        folders: this.state.folders,
+        notes: this.state.notes
+    }}>
       <div>
         <Link to="/"><h1>Noteful</h1></Link>
         <Switch>
@@ -41,7 +46,9 @@ export default class App extends Component {
              />} />
           <Route component={NotFound} />
         </Switch>
+
     </div>
+    </UserContext.Provider>
     )
   }
 }
