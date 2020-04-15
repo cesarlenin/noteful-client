@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import FolderList from "../components/FolderList";
 import NoteList from '../components/NoteList';
+import UserContext from '../components/UserContext'
 import '../App.css';
 
 export default class MainPage extends Component {
+  static contextType = UserContext;
   render() {
     return (
       <main>
@@ -12,7 +14,7 @@ export default class MainPage extends Component {
         </section>
         <section className="noteList ">
         <NoteList 
-        notes={this.props.notes}
+         notes={this.context.notes}
         />
         <button>Add notes</button>
         </section>

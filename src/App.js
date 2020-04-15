@@ -26,7 +26,7 @@ export default class App extends Component {
   fetch('http://localhost:9090/notes')
     .then(response => response.json())
     .then(data => this.setState({
-      folders: data.folders
+      notes: data.notes
   }))
   }
 
@@ -42,10 +42,8 @@ export default class App extends Component {
         <Link to="/"><h1>Noteful</h1></Link>
         <Switch>
           <Route exact path='/' 
-          render={() =>
-             <MainPage
-             notes={this.state.notes}
-            />} />
+          component={MainPage}
+            />
             <Route exact path='/FolderLists/:folderId' 
             component={FolderPage}
              />
