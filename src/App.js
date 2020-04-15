@@ -5,59 +5,58 @@ import FolderPage from './Pages/FolderPage';
 import NotePage from './Pages/NotePage';
 import UserContext from './components/UserContext';
 import {Route, Switch, Link} from 'react-router-dom';
-import STORE from './dummy-store';
 
 
 
 export default class App extends Component {
 
   state = {
-    folders: STORE.folders,
-    notes: STORE.notes,
+    folders: [],
+    notes: []
   }
 
   //fetch for /folders and notes
   componentDidMount(){
-  fetch('http://localhost:3000/folders')
+  fetch('http://localhost:9090/folders')
     .then(response => response.json())
     .then(data => this.setState(
-      {folders: data}
+      {
+        folders: data
+      }
     ))
-  fetch('http://localhost:3000/notes')
+  fetch('http://localhost:9090/notes')
     .then(response => response.json())
     .then(data => this.setState(
-      {notes: data}
+      {
+        notes: data
+      }
       ))
   }
 
   //delete function
-  handleDelete(noteId,e){
-    e.preventDefault()
-    console.log(noteId)
-//     fetch(`http://localhost:9090/notes/${noteId}`, {
-//        method: 'DELETE',
-//        headers: {
-//          'content-type': 'application/json'
-//   }
-//   .then(res => {
-//     if (!res.ok) {
-//       return res.json()
-//       .then(error => {
-//         throw error
-//       })
-//     }
-//     return res.json()
-//   })
-// })
-
-  }
+  handleDelete = (id) => {
+    console.log(id)
+    fetch(`http://localhost:9090/notes/${id}`, {
+       method: 'DELETE',
+       headers: {
+         'content-type': 'application/json'
+    }
+    
+    })
+    .then(data => {
+      if (data.ok) { 
+        this.setState({
+          notes: this.state.notes.filter(val => val.id !== id )
+        })
+    }})
+}
 
   render() {
     return (
       <UserContext.Provider value={{
         folders: this.state.folders,
         notes: this.state.notes,
-        onDelete:this.handleDelete
+        onDelete: this.handleDelete
     }}>
       <div>
         <Link to="/"><h1>Noteful</h1></Link>

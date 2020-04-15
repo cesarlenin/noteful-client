@@ -13,7 +13,7 @@ export default class Note extends Component {
         <h2>{this.props.name}</h2>
       </Link>
       <p>modified on:{modified.getDate()}/{modified.getMonth()}/{modified.getFullYear()}</p>
-      <button onClick={e=>this.context.onDelete("hello",e)}>
+      <button onClick={() => this.context.onDelete(this.props.id)}>
           Delete Note
       </button>{/*add call back handleDelete */}
       </div> 
