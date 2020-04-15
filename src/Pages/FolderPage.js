@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import FolderList from "./FolderList";
-import NoteList from './NoteList';
+import FolderList from "../components/FolderList";
+import NoteList from '../components/NoteList';
 import '../App.css';
 
-export default class MainPage extends Component {
+export default class FolderPage extends Component {
   render() {
+
+   const folderNoteList = this.props.notes.filter(notes => notes.folderId === this.props.match.params.folderId)
+
     return (
       <main>
         <section className="folderList">
@@ -14,7 +17,7 @@ export default class MainPage extends Component {
         </section>
         <section className="noteList ">
         <NoteList 
-        notes={this.props.notes}
+        notes={folderNoteList}
         />
         <button>Add notes</button>
         </section>
@@ -22,4 +25,3 @@ export default class MainPage extends Component {
     )
   }
 }
-

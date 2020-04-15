@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import NotFound from './components/NotFound';
-import MainPage from './components/MainPage';
-import FolderPage from './components/FolderPage';
-import NotePage from './components/NotePage';
+import NotFound from './Pages/NotFound';
+import MainPage from './Pages/MainPage';
+import FolderPage from './Pages/FolderPage';
+import NotePage from './Pages/NotePage';
 import {Route, Switch, Link} from 'react-router-dom';
 import STORE from './dummy-store';
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NoteList from './NoteList';
+import NoteList from '../components/NoteList';
 import '../App.css';
 
 export default class NotePage extends Component {
