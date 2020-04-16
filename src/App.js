@@ -6,6 +6,7 @@ import NotePage from './Pages/NotePage';
 import AddFolderPage from './Pages/AddFolderPage';
 import UserContext from './components/UserContext';
 import {Route, Switch, Link} from 'react-router-dom';
+// import cuid from 'cuid';
 
 
 
@@ -53,25 +54,24 @@ export default class App extends Component {
 }
 
   handleAddFolder = (name) => {
-    console.log(name)
-    const newName = JSON.stringify({name});
+    const newItem = JSON.stringify({name});
+
     fetch(`http://localhost:9090/folders`, {
        method: 'POST',
        headers: {
          'content-type': 'application/json'
         },
-        body: newName
+        body: newItem
       })
+    .then(res=>{
+      return res.json()
+    })
     .then(data => {
-      console.log('ran')
       console.log(data)
-      if (data.ok) { 
-        console.log(data)
-        this.setState({
-          folders: this.state.folders
-        })
-    }
-  })
+      this.setState(
+        {folders: [...this.state.folders,data]}
+      )
+    })
 }
 
   render() {
