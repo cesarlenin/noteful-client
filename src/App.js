@@ -70,6 +70,10 @@ export default class App extends Component {
       });
   };
 
+  handleAddNote = (name, content, selected) => {
+    console.log(name, content, selected)
+  };
+
   render() {
     return (
       <UserContext.Provider
@@ -78,6 +82,7 @@ export default class App extends Component {
           notes: this.state.notes,
           onDelete: this.handleDelete,
           onAddFolder: this.handleAddFolder,
+          onAddNote: this.handleAddNote,
         }}
       >
         <div>

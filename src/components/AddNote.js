@@ -14,6 +14,9 @@ export default class AddNote extends Component {
         value: '',
         touched: false,
       },
+      selected: {
+        value: ''
+      }
     };
   }
 
@@ -42,8 +45,9 @@ export default class AddNote extends Component {
   updateContent(content) {
     this.setState({ content: { value: content, touched: true } });
   }
-
- 
+  updateSelected(selected) {
+    this.setState({ selected: selected });
+  }
 
   render() {
     const nameError = this.validateName();
@@ -56,7 +60,7 @@ export default class AddNote extends Component {
     return (
       <form
         onSubmit={() => {
-          this.context.onAddFolder(this.state.name.value);
+          this.context.onAddNote(this.state.name.value,this.state.content.value,this.state.selected);//add seleted option
           this.props.history.push('/');
         }}
       >
@@ -78,7 +82,8 @@ export default class AddNote extends Component {
         {this.state.content.touched && (
           <ValidationError message={contentError} />
         )}
-        <select>
+        <select value={this.state.selected} onChange={(e) => this.updateSelected(e.target.value)}>
+         <option value="disabled" hidden>select folder</option>
           {optionHtml}
         </select>
 
