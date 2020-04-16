@@ -10,6 +10,10 @@ export default class AddNote extends Component {
         value: '',
         touched: false,
       },
+      content: {
+        value: '',
+        touched: false,
+      },
     };
   }
 
@@ -23,13 +27,25 @@ export default class AddNote extends Component {
       return 'Name must be at least 3 characters long';
     }
   }
-
   updateName(name) {
     this.setState({ name: { value: name, touched: true } });
   }
 
+  validateContent() {
+    const content = this.state.content.value.trim();
+    if (content.length === 0) {
+      return 'Content is required';
+    } else if (content.length < 3) {
+      return 'Content must be at least 3 characters long';
+    }
+  }
+  updateContent(content) {
+    this.setState({ content: { value: content, touched: true } });
+  }
+
   render() {
     const nameError = this.validateName();
+    const contentError = this.validateContent();
 
     return (
       <form
@@ -47,7 +63,24 @@ export default class AddNote extends Component {
           onChange={(e) => this.updateName(e.target.value)}
         />
         {this.state.name.touched && <ValidationError message={nameError} />}
-        <button type="submit" value="Submit" disabled={this.validateName()}>
+        <input
+          type="text"
+          id="contentNote"
+          name="contentNote"
+          onChange={(e) => this.updateContent(e.target.value)}
+        />
+        {this.state.content.touched && (
+          <ValidationError message={contentError} />
+        )}
+        <select>
+          <option></option>
+        </select>
+
+        <button
+          type="submit"
+          value="Submit"
+          disabled={this.validateName() || this.validateContent()}
+        >
           Add Note
         </button>
       </form>

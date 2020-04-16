@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddNote from '../components/AddNote';
 
-export default class AddNotePage extends React.Component {
+export default class AddNotePage extends Component {
   render() {
     return (
       <main>
