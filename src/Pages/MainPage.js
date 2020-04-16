@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import FolderList from "../components/FolderList";
+import React, { Component } from 'react';
+import FolderList from '../components/FolderList';
 import NoteList from '../components/NoteList';
-import UserContext from '../components/UserContext'
+import UserContext from '../components/UserContext';
 import '../App.css';
 
 export default class MainPage extends Component {
@@ -10,16 +10,12 @@ export default class MainPage extends Component {
     return (
       <main>
         <section className="folderList">
-        <FolderList/>
+          <FolderList />
         </section>
         <section className="noteList ">
-        <NoteList 
-         notes={this.context.notes}
-        />
-        <button>Add notes</button>
+          <NoteList notes={this.context.notes} />
         </section>
       </main>
-    )
+    );
   }
 }
-
