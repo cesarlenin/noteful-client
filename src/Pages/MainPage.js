@@ -13,7 +13,7 @@ export default class MainPage extends Component {
           <FolderList />
         </section>
         <section className="noteList ">
-          <NoteList notes={this.context.notes} />
+          <NoteList notes={this.context.notes} {...this.props} />
         </section>
       </main>
     );

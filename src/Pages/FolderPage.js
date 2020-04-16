@@ -18,7 +18,7 @@ export default class FolderPage extends Component {
           <FolderList />
         </section>
         <section className="noteList ">
-          <NoteList notes={folderNoteList} />
+          <NoteList notes={folderNoteList} {...this.props} />
         </section>
       </main>
     );
