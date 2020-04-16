@@ -7,7 +7,7 @@ import AddFolderPage from './Pages/AddFolderPage';
 import UserContext from './components/UserContext';
 import AddNotePage from './Pages/AddNotePage';
 import { Route, Switch, Link } from 'react-router-dom';
-import ErrorPage from './ErrorPage';
+import ErrorPage from './Pages/ErrorPage';
 // import cuid from 'cuid';
 
 export default class App extends Component {
