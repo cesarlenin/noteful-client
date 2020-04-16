@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Folder from './Folder'
 import UserContext from './UserContext'
 import {Link} from 'react-router-dom';
+import './FolderList.css'
 
 export default class FolderList extends Component {
 
