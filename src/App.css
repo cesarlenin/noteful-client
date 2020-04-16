@@ -22,3 +22,10 @@ section{
 .noteList{
   width: 65%;
 }
+
+.errorPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

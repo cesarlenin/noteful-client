@@ -117,10 +117,8 @@ export default class App extends Component {
                 component={FolderPage}
               />
               <Route exact path="/Notes/:noteId" component={NotePage} />
-
               <Route exact path="/AddFolder" component={AddFolderPage} />
               <Route exact path="/AddNote" component={AddNotePage} />
-
               <Route component={NotFound} />
             </Switch>
           </ErrorPage>
