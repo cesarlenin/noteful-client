@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Note from './Note';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import './NoteList.css'
 
 export default class NoteList extends Component {
@@ -23,9 +22,6 @@ export default class NoteList extends Component {
     return (
       <div className="notesList">
         {notesList}
-        <Link className="addNoteLink" to={`/AddNote`}>
-          <h2>add note</h2>
-        </Link>
       </div>
     );
   }

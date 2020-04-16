@@ -111,11 +111,7 @@ export default class App extends Component {
           <ErrorPage>
             <Switch>
               <Route exact path="/" component={MainPage} />
-              <Route
-                exact
-                path="/FolderLists/:folderId"
-                component={FolderPage}
-              />
+              <Route exact path="/FolderLists/:folderId" component={FolderPage}/>
               <Route exact path="/Notes/:noteId" component={NotePage} />
               <Route exact path="/AddFolder" component={AddFolderPage} />
               <Route exact path="/AddNote" component={AddNotePage} />
