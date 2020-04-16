@@ -9,7 +9,6 @@ export default class AddFolderPage extends Component {
       <main>
         <section className="addFolder">
         <AddFolder/>
-        hello
         </section>
       </main>
     )

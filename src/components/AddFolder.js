@@ -5,7 +5,11 @@ export default class FolderList extends Component {
   render() {
 
     return (
-        <h3>Create a folder</h3>
+        <form>
+          <h3>Create a folder</h3>
+          <label for="nameFolder">Name:</label>
+          <input type="text"  id="nameFolder" defaultValue="nameFolder"/>
+        </form>
     )
   }
 }
