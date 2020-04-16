@@ -17,7 +17,7 @@ export default class AddNote extends Component {
       selected: {
         value: '',
         touched: false,
-      }
+      },
     };
   }
 
@@ -53,7 +53,7 @@ export default class AddNote extends Component {
     }
   }
   updateSelected(selected) {
-    this.setState({ selected: selected, touched: true});
+    this.setState({ selected: selected, touched: true });
   }
 
   render() {
@@ -61,14 +61,22 @@ export default class AddNote extends Component {
     const contentError = this.validateContent();
     const selectedError = this.validateSelected();
 
-    const optionHtml=this.context.folders.map((folder)=>{
-      return<option key={folder.id} value={folder.name}>{folder.name}</option>
-     })
+    const optionHtml = this.context.folders.map((folder) => {
+      return (
+        <option key={folder.id} value={folder.id}>
+          {folder.name}
+        </option>
+      );
+    });
 
     return (
       <form
         onSubmit={() => {
-          this.context.onAddNote(this.state.name.value,this.state.content.value,this.state.selected);//add seleted option
+          this.context.onAddNote(
+            this.state.name.value,
+            this.state.content.value,
+            this.state.selected
+          ); //add seleted option
           this.props.history.push('/');
         }}
       >
@@ -90,8 +98,13 @@ export default class AddNote extends Component {
         {this.state.content.touched && (
           <ValidationError message={contentError} />
         )}
-        <select value={this.state.selected} onChange={(e) => this.updateSelected(e.target.value)}>
-        <option value="disabled" hidden>select folder</option>
+        <select
+          value={this.state.selected}
+          onChange={(e) => this.updateSelected(e.target.value)}
+        >
+          <option value="disabled" hidden>
+            select folder
+          </option>
           {optionHtml}
         </select>
         {this.state.selected.touched && (
@@ -101,7 +114,11 @@ export default class AddNote extends Component {
         <button
           type="submit"
           value="Submit"
-          disabled={this.validateName() || this.validateContent()|| this.validateSelected()}
+          disabled={
+            this.validateName() ||
+            this.validateContent() ||
+            this.validateSelected()
+          }
         >
           Add Note
         </button>

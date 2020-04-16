@@ -70,8 +70,24 @@ export default class App extends Component {
       });
   };
 
-  handleAddNote = (name, content, selected) => {
-    console.log(name, content, selected)
+  handleAddNote = (name, content, folderId) => {
+    const newItem = JSON.stringify({ name, content, folderId });
+
+    fetch(`http://localhost:9090/notes`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: newItem,
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        this.setState({ notes: [...this.state.notes, data] });
+      });
   };
 
   render() {
