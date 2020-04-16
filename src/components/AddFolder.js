@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ValidationError from './ValidationError';
+import UserContext from '../components/UserContext';
 
 export default class FolderList extends Component {
   constructor(props) {
@@ -11,6 +12,8 @@ export default class FolderList extends Component {
       },
     };
   }
+
+  static contextType = UserContext;
 
   validateName() {
     const name = this.state.name.value.trim();
@@ -31,11 +34,12 @@ export default class FolderList extends Component {
     return (
       <form
         onSubmit={() => {
+          this.context.onAddFolder(this.state.name.value);
           this.props.history.push('/');
         }}
       >
         <h3>Create a folder</h3>
-        <label for="nameFolder">Name:</label>
+        <label htmlFor="nameFolder">Name:</label>
         <input
           type="text"
           id="nameFolder"
@@ -43,7 +47,7 @@ export default class FolderList extends Component {
           onChange={(e) => this.updateName(e.target.value)}
         />
         {this.state.name.touched && <ValidationError message={nameError} />}
-        <button type="submit" value="Submit">
+        <button type="submit" value="Submit" disabled={this.validateName()} >
           Add folder
         </button>
       </form>

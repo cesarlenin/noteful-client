@@ -52,12 +52,34 @@ export default class App extends Component {
     }})
 }
 
+  handleAddFolder = (name) => {
+    console.log(name)
+    fetch(`http://localhost:9090/folders/${name}`, {
+       method: 'POST',
+       headers: {
+         'content-type': 'application/json'
+    }
+    
+    })
+    .then(data => {
+      console.log('ran')
+      console.log(data)
+      if (data.ok) { 
+        console.log(data)
+        this.setState({
+          folders: this.state.folders
+        })
+    }
+  })
+}
+
   render() {
     return (
       <UserContext.Provider value={{
         folders: this.state.folders,
         notes: this.state.notes,
-        onDelete: this.handleDelete
+        onDelete: this.handleDelete,
+        onAddFolder:this.handleAddFolder
     }}>
       <div>
         <Link to="/"><h1>Noteful</h1></Link>
@@ -75,7 +97,7 @@ export default class App extends Component {
             <Route exact path='/AddFolder' 
               component={AddFolderPage}
             />
-            
+
           <Route component={NotFound} />
         </Switch>
 
