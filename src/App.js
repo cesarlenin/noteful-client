@@ -64,10 +64,11 @@ export default class App extends Component {
         body: newItem
       })
     .then(res=>{
-      return res.json()
+      if(res.ok){
+        return res.json()
+      }
     })
     .then(data => {
-      console.log(data)
       this.setState(
         {folders: [...this.state.folders,data]}
       )
