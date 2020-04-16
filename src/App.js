@@ -3,6 +3,7 @@ import NotFound from './Pages/NotFound';
 import MainPage from './Pages/MainPage';
 import FolderPage from './Pages/FolderPage';
 import NotePage from './Pages/NotePage';
+import AddFolderPage from './Pages/AddFolderPage';
 import UserContext from './components/UserContext';
 import {Route, Switch, Link} from 'react-router-dom';
 
@@ -70,6 +71,11 @@ export default class App extends Component {
              <Route exact path='/Notes/:noteId' 
               component={NotePage}
               />
+
+            <Route exact path='/AddFolder' 
+              component={AddFolderPage}
+            />
+            
           <Route component={NotFound} />
         </Switch>
 
