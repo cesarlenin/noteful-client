@@ -15,7 +15,8 @@ export default class AddNote extends Component {
         touched: false,
       },
       selected: {
-        value: ''
+        value: '',
+        touched: false,
       }
     };
   }
@@ -45,13 +46,20 @@ export default class AddNote extends Component {
   updateContent(content) {
     this.setState({ content: { value: content, touched: true } });
   }
+
+  validateSelected() {
+    if (this.state.selected.touched === false) {
+      return 'Selecting a folder is required';
+    }
+  }
   updateSelected(selected) {
-    this.setState({ selected: selected });
+    this.setState({ selected: selected, touched: true});
   }
 
   render() {
     const nameError = this.validateName();
     const contentError = this.validateContent();
+    const selectedError = this.validateSelected();
 
     const optionHtml=this.context.folders.map((folder)=>{
       return<option key={folder.id} value={folder.name}>{folder.name}</option>
@@ -83,14 +91,17 @@ export default class AddNote extends Component {
           <ValidationError message={contentError} />
         )}
         <select value={this.state.selected} onChange={(e) => this.updateSelected(e.target.value)}>
-         <option value="disabled" hidden>select folder</option>
+        <option value="disabled" hidden>select folder</option>
           {optionHtml}
         </select>
+        {this.state.selected.touched && (
+          <ValidationError message={selectedError} />
+        )}
 
         <button
           type="submit"
           value="Submit"
-          disabled={this.validateName() || this.validateContent()}
+          disabled={this.validateName() || this.validateContent()|| this.validateSelected()}
         >
           Add Note
         </button>
