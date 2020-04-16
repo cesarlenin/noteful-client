@@ -7,6 +7,7 @@ import AddFolderPage from './Pages/AddFolderPage';
 import UserContext from './components/UserContext';
 import AddNotePage from './Pages/AddNotePage';
 import { Route, Switch, Link } from 'react-router-dom';
+import ErrorPage from './ErrorPage';
 // import cuid from 'cuid';
 
 export default class App extends Component {
@@ -73,7 +74,7 @@ export default class App extends Component {
   handleAddNote = (name, content, folderId) => {
     const modified = new Date().toISOString();
 
-    const newItem = JSON.stringify({ name, content, folderId, modified});
+    const newItem = JSON.stringify({ name, content, folderId, modified });
 
     fetch(`http://localhost:9090/notes`, {
       method: 'POST',
@@ -107,16 +108,22 @@ export default class App extends Component {
           <Link to="/">
             <h1>Noteful</h1>
           </Link>
-          <Switch>
-            <Route exact path="/" component={MainPage} />
-            <Route exact path="/FolderLists/:folderId" component={FolderPage} />
-            <Route exact path="/Notes/:noteId" component={NotePage} />
+          <ErrorPage>
+            <Switch>
+              <Route exact path="/" component={MainPage} />
+              <Route
+                exact
+                path="/FolderLists/:folderId"
+                component={FolderPage}
+              />
+              <Route exact path="/Notes/:noteId" component={NotePage} />
 
-            <Route exact path="/AddFolder" component={AddFolderPage} />
-            <Route exact path="/AddNote" component={AddNotePage} />
+              <Route exact path="/AddFolder" component={AddFolderPage} />
+              <Route exact path="/AddNote" component={AddNotePage} />
 
-            <Route component={NotFound} />
-          </Switch>
+              <Route component={NotFound} />
+            </Switch>
+          </ErrorPage>
         </div>
       </UserContext.Provider>
     );
