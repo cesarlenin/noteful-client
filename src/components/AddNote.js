@@ -43,9 +43,15 @@ export default class AddNote extends Component {
     this.setState({ content: { value: content, touched: true } });
   }
 
+ 
+
   render() {
     const nameError = this.validateName();
     const contentError = this.validateContent();
+
+    const optionHtml=this.context.folders.map((folder)=>{
+      return<option key={folder.id} value={folder.name}>{folder.name}</option>
+     })
 
     return (
       <form
@@ -73,7 +79,7 @@ export default class AddNote extends Component {
           <ValidationError message={contentError} />
         )}
         <select>
-          <option></option>
+          {optionHtml}
         </select>
 
         <button
