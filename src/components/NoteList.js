@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Note from './Note';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export default class NoteList extends Component {
@@ -28,3 +29,14 @@ export default class NoteList extends Component {
     );
   }
 }
+NoteList.propTypes = {
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      folderId: PropTypes.string.isRequired,
+      modified: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ),
+};

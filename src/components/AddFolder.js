@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ValidationError from './ValidationError';
 import UserContext from '../components/UserContext';
 
-export default class FolderList extends Component {
+export default class AddFolder extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,7 +47,7 @@ export default class FolderList extends Component {
           onChange={(e) => this.updateName(e.target.value)}
         />
         {this.state.name.touched && <ValidationError message={nameError} />}
-        <button type="submit" value="Submit" disabled={this.validateName()} >
+        <button type="submit" value="Submit" disabled={this.validateName()}>
           Add folder
         </button>
       </form>

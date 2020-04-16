@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ValidationError from './ValidationError';
+import PropTypes from 'prop-types';
 import UserContext from '../components/UserContext';
 
 export default class AddNote extends Component {
@@ -126,3 +127,11 @@ export default class AddNote extends Component {
     );
   }
 }
+AddNote.propTypes = {
+  folders: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    })
+  ),
+};

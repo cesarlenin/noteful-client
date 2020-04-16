@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserContext from '../components/UserContext';
+import PropTypes from 'prop-types';
 import './Note.css';
 
 export default class Note extends Component {
@@ -29,3 +30,14 @@ export default class Note extends Component {
     );
   }
 }
+Note.propTypes = {
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      folderId: PropTypes.string.isRequired,
+      modified: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ),
+};
