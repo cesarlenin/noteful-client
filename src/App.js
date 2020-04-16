@@ -71,7 +71,9 @@ export default class App extends Component {
   };
 
   handleAddNote = (name, content, folderId) => {
-    const newItem = JSON.stringify({ name, content, folderId });
+    const modified = new Date().toISOString();
+
+    const newItem = JSON.stringify({ name, content, folderId, modified});
 
     fetch(`http://localhost:9090/notes`, {
       method: 'POST',
