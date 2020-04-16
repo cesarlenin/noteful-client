@@ -54,13 +54,14 @@ export default class App extends Component {
 
   handleAddFolder = (name) => {
     console.log(name)
-    fetch(`http://localhost:9090/folders/${name}`, {
+    const newName = JSON.stringify({name});
+    fetch(`http://localhost:9090/folders`, {
        method: 'POST',
        headers: {
          'content-type': 'application/json'
-    }
-    
-    })
+        },
+        body: newName
+      })
     .then(data => {
       console.log('ran')
       console.log(data)
