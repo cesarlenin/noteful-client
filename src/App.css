@@ -5,6 +5,7 @@
 main{
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 h1{
@@ -29,3 +30,8 @@ section{
   justify-content: center;
   align-items: center;
 }
+
+input, select{
+  margin:5px;
+}
+

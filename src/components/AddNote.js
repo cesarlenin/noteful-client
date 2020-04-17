@@ -81,24 +81,26 @@ export default class AddNote extends Component {
           this.props.history.push('/');
         }}
       >
-        <h3>Create a folder</h3>
+        <h3>Create a note</h3>
         <label htmlFor="nameNote">Name:</label>
         <input
           type="text"
           id="nameNote"
           name="nameNote"
           onChange={(e) => this.updateName(e.target.value)}
-        />
+        /><br/>
         {this.state.name.touched && <ValidationError message={nameError} />}
+        <label htmlFor="contentNote">Content:</label>
         <input
           type="text"
           id="contentNote"
           name="contentNote"
           onChange={(e) => this.updateContent(e.target.value)}
-        />
+        /><br/>
         {this.state.content.touched && (
           <ValidationError message={contentError} />
         )}
+        <label>Folder:</label>
         <select
           value={this.state.selected}
           onChange={(e) => this.updateSelected(e.target.value)}
@@ -107,7 +109,7 @@ export default class AddNote extends Component {
             select folder
           </option>
           {optionHtml}
-        </select>
+        </select><br/>
         {this.state.selected.touched && (
           <ValidationError message={selectedError} />
         )}
