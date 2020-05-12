@@ -51,12 +51,14 @@ export default class App extends Component {
   //delete function
   handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:9090/notes/${id}`, {
+    fetch(config.API_ENDPOINT+ `notes/${id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
-      },
-    }).then((data) => {
+        'Authorization': `Bearer ${config.API_KEY}`
+      }
+    })
+    .then((data) => {
       if (data.ok) {
         this.setState({
           notes: this.state.notes.filter((val) => val.id !== id),
@@ -67,13 +69,13 @@ export default class App extends Component {
 
   handleAddFolder = (name) => {
     const newItem = JSON.stringify({ name });
-
-    fetch(`http://localhost:9090/folders`, {
+    fetch(config.API_ENDPOINT+ 'folders', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        'Authorization': `Bearer ${config.API_KEY}`
       },
-      body: newItem,
+      body: newItem
     })
       .then((res) => {
         if (res.ok) {
@@ -89,13 +91,13 @@ export default class App extends Component {
     const modified = new Date().toISOString();
 
     const newItem = JSON.stringify({ name, content, folderId, modified });
-
-    fetch(`http://localhost:9090/notes`, {
+    fetch(config.API_ENDPOINT+ 'notes', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        'Authorization': `Bearer ${config.API_KEY}`
       },
-      body: newItem,
+      body: newItem
     })
       .then((res) => {
         if (res.ok) {
