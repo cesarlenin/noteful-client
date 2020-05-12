@@ -8,12 +8,12 @@ export default class NotePage extends Component {
   render() {
     const { folders, notes } = this.context;
     const shownNote = notes.find(
-      (note) => note.id === this.props.match.params.noteId
+      (note) => note.id === Number(this.props.match.params.noteId)
     );
     const shownFolder = folders.find(
       (folder) => folder.id === shownNote.folderId
     );
-
+    
     return (
       <main>
         <section className="folderList">
