@@ -8,6 +8,7 @@ import UserContext from './components/UserContext';
 import AddNotePage from './Pages/AddNotePage';
 import { Route, Switch, Link } from 'react-router-dom';
 import ErrorPage from './Pages/ErrorPage';
+import config from './config';
 // import cuid from 'cuid';
 
 export default class App extends Component {
@@ -19,11 +20,11 @@ export default class App extends Component {
   //fetch for /folders and notes
 
   componentDidMount() {
-    fetch('http://localhost:8000/api/folders/', {
+    fetch(config.API_ENDPOINT+ 'folders', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Bearer 80df5fba-8d75-11ea-bc55-0242ac130003`
+        'Authorization': `Bearer ${config.API_KEY}`
       }
     })
       .then((response) => response.json())
@@ -32,11 +33,11 @@ export default class App extends Component {
           folders: data,
         })
       );
-    fetch('http://localhost:8000/api/notes/', {
+    fetch(config.API_ENDPOINT+ 'notes', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Bearer 80df5fba-8d75-11ea-bc55-0242ac130003`
+        'Authorization': `Bearer ${config.API_KEY}`
       }
     })
       .then((response) => response.json())
