@@ -10,9 +10,8 @@ export default class FolderPage extends Component {
   render() {
     const { notes } = this.context;
     const folderNoteList = notes.filter(
-      (notes) => notes.folderId === this.props.match.params.folderId
+      (notes) => notes.folderId === Number(this.props.match.params.folderId)
     );
-
     return (
       <main>
         <section className="folderList">

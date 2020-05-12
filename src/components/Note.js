@@ -34,8 +34,8 @@ Note.propTypes = {
   notes: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-      folderId: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      folderId: PropTypes.number.isRequired,
       modified: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
     })

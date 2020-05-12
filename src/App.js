@@ -17,15 +17,28 @@ export default class App extends Component {
   };
 
   //fetch for /folders and notes
+
   componentDidMount() {
-    fetch('http://localhost:9090/folders')
+    fetch('http://localhost:8000/api/folders/', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer 80df5fba-8d75-11ea-bc55-0242ac130003`
+      }
+    })
       .then((response) => response.json())
       .then((data) =>
         this.setState({
           folders: data,
         })
       );
-    fetch('http://localhost:9090/notes')
+    fetch('http://localhost:8000/api/notes/', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer 80df5fba-8d75-11ea-bc55-0242ac130003`
+      }
+    })
       .then((response) => response.json())
       .then((data) =>
         this.setState({
